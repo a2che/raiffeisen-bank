@@ -1,0 +1,113 @@
+
+$font:		Source Sans Pro, sans-serif
+$primary-color: #3F3F3F
+$primary-shadow : 0px 10px 40px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02)
+$secondary-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1)
+$transition-speed: 0.2s
+
+
+=font($family,$style,$weight,$size,$line-height)
+	font-family: $family, sans-serif
+	font-style: $style
+	font-weight: $weight
+	font-size: $size
+	line-height: $line-height
+=flexSB()
+	display: flex
+	justify-content: space-between
+	align-items: center
+	flex-wrap: wrap 
+	flex-direction: row
+=flexC()
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-wrap: wrap 
+	flex-direction: row
+
+
+
+%input-style
+	padding: 11px 0px 10px 16px
+	width: 100%
+	box-sizing: border-box
+	background: #FFFEFB
+	box-shadow: $secondary-shadow
+	border-radius: 4px
+	margin-bottom: 	6px
+	border: none
+	transition: $transition-speed
+	+font(Source Sans Pro,normal,normal,12px,15px)
+	color: $primary-color
+	&:focus
+		outline: none
+		box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.06), 0px 8px 10px rgba(0, 0, 0, 0.04)
+	&::placeholder
+		font-family: Source Sans Pro
+		font-style: normal
+		font-weight: normal
+		font-size: 12px
+		line-height: 15px
+		color: #B4B4B4	
+
+
+@mixin mediaSize($size) 
+	@if $size == xxl
+		@media (min-width: 1440px)
+			@content 
+
+	@else if $size == xl 
+		@media (max-width: 1440px)
+			@content  
+
+	@else if $size == lg 
+		@media (max-width: 1200px)
+			@content  
+
+	@else if $size == md 
+		@media (max-width: 768px)
+			@content
+			
+	@else if $size == sm 
+		@media (max-width: 576px)
+			@content
+	@else if $size == xs
+		@media (max-width: 375px)
+			@content
+	@else if $size == xxs
+		@media (max-width: 320px)
+			@content
+
+
+section.main
+	@include mediaSize(xxl) 
+		padding-left: calc(50% - 700px)
+		padding-right: calc(50% - 700px)
+
+	@include mediaSize(xl) 
+		padding-left: calc(50% - 580px)
+		padding-right: calc(50% - 580px)
+
+	@include mediaSize(lg) 
+		padding-left: calc(50% - 360px)
+		padding-right: calc(50% - 360px)
+	
+	@include mediaSize(md) 
+		padding-left: calc(50% - 260px)
+		padding-right: calc(50% - 260px)
+
+	@include mediaSize(sm) 
+		padding: 0 15px
+	@include mediaSize(xxs) 
+		padding: 0px 0px
+	
+
+body
+	background: rgba(255, 254, 251, 0.8)
+h1  
+	+font(Source Sans Pro,normal,600,28px,35px)
+	color: #3F3F3F
+	@include mediaSize(md) 
+		margin-bottom: 	24px
+		text-align: center
+
